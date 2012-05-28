@@ -74,13 +74,14 @@ post "/github" do
     ta <=> tb
   end
 
-  # output first 3 commits
-  push["commits"][0..2].each do |c|
-    say repo, "\0030#{repo}:\0037 #{branch}\0033 #{c["author"]["name"]}\003 #{c["message"]}"
-  end
-
-  if push["commits"].length-2 > 0
-    say repo, "\0030#{repo}:\0037 #{branch}\003 ... and #{push["commits"].length-2} more"
+  # output one commit
+  push["commits"][0..0].each do |c|
+    #say repo, "\0030#{repo}:\0037 #{branch}\0033 #{c["author"]["name"]}\003 #{c["message"]}"
+    if push["commits"].length-1 > 0
+      say repo, "\0030#{repo}:\0037 #{c["author"]["name"]}\003 * #{branch}\0033: #{c["message"]} (+#{push["commits"].length-1} more commits...) - #{c["url"]}\003"
+    else
+      say repo, "\0030#{repo}:\0037 #{c["author"]["name"]}\003 * #{branch}\0033: #{c["message"]} - #{c["url"]}\003"
+    end
   end
 
   push.inspect
