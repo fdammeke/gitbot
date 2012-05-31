@@ -6,12 +6,6 @@ require 'optparse'
 options = {
   :app_name   => "gitbot",
   :backtrace  => true,
-  :dir        => "/home/fdammeke/gitrepo/gitbot",
-  :dir_mode    => :normal,
-#  :ontop      => true,
-  #:mode       => "exec",
-#  :multiple   => true,
-#  :log_dir    => "/tmp/",
   :log_output => true,
 }
 
